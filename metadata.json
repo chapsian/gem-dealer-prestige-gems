@@ -1,0 +1,6 @@
+{
+  "name": "Prestige Gems - Gem Dealers in Kenya",
+  "description": "Premium dealer of rough gemstones in Kenya, including Tsavorites, Rhodolites, Garnets, Tourmalines, and Citrines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
