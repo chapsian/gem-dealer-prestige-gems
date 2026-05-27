@@ -4,7 +4,7 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, Phone, MessageCircle, MapPin, ArrowRight, Instagram, Facebook, Gem, Loader2 } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin, ArrowRight, Instagram, Facebook, Gem, Loader2, Truck } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const GEMSTONES = [
@@ -191,6 +191,33 @@ export default function App() {
           {/* Collection Grid */}
           <section id="collection" className="bg-neutral-950 py-32">
             <div className="mx-auto max-w-7xl px-6">
+              {/* Trust Badges Bar */}
+              <div className="mb-16 flex flex-col gap-6 rounded-sm border border-neutral-800 bg-neutral-900/10 p-6 md:flex-row md:items-center md:justify-around md:gap-4 md:p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+                    <svg className="h-7 w-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="PayPal logo">
+                      <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.336a1.025 1.025 0 0 1 1.012-.86H14.17c3.606 0 5.483 1.768 5.44 5.11-.06 4.301-2.73 6.784-6.425 6.784H9.682l-1.636 6.136a.636.636 0 0 1-.62c.002 0-.35.831-.35.831zm10.263-13.363c-.006-.5-.145-.964-.411-1.365a2.636 2.636 0 0 0-1.226-1.048c-.612-.224-1.425-.297-2.394-.297H8.845a.64.64 0 0 0-.632.535L5.706 21.6a.4.4 0 0 0 .393.46h3.45a.64.64 0 0 0 .618-.474l1.1-4.126.04-.153a.64.64 0 0 1 .618-.475h1.22c3.155 0 5.602-1.282 6.135-5.074.205-1.446.062-2.7-.941-3.725z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-lg font-light text-white">PayPal Accepted</h4>
+                    <p className="text-xs text-neutral-400">Secure payment on all gemstone purchases</p>
+                  </div>
+                </div>
+
+                <div className="hidden h-10 w-[1px] bg-neutral-800 md:block" />
+
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+                    <Truck className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-lg font-light text-white">Free Worldwide Shipment</h4>
+                    <p className="text-xs text-neutral-400">Fully express insured delivery directly to your door</p>
+                  </div>
+                </div>
+              </div>
+
               <div className="mb-20 flex flex-col items-end justify-between gap-6 md:flex-row">
                 <div className="max-w-xl">
                   <h2 className="mb-4 font-serif text-4xl font-light text-white sm:text-5xl">Our Premier Vault</h2>
