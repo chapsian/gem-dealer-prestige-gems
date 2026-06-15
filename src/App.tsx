@@ -4,7 +4,7 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, Phone, MessageCircle, MapPin, ArrowRight, Instagram, Facebook, Gem, Loader2, Truck } from "lucide-react";
+import { Mail, MapPin, ArrowRight, Instagram, Facebook, Gem, Loader2, Truck } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const GEMSTONES = [
@@ -46,9 +46,7 @@ const GEMSTONES = [
   }
 ];
 
-const WHATSAPP_NUMBER = "+254720646916";
 const EMAIL = "prestige.gems@yahoo.com";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}`;
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -94,24 +92,10 @@ export default function App() {
                 <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">Prestige Gems</span>
               </div>
               
-              <div className="hidden items-center gap-8 md:flex">
+              <div className="flex items-center gap-8">
                 <a href="#collection" className="text-sm font-medium text-neutral-400 transition-colors hover:text-white">Collection</a>
                 <a href="#contact" className="text-sm font-medium text-neutral-400 transition-colors hover:text-white">Contact</a>
-                <a 
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition-all hover:bg-gold hover:text-neutral-950"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>WhatsApp: {WHATSAPP_NUMBER}</span>
-                  <ArrowRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
-                </a>
               </div>
-
-              <button className="md:hidden">
-                <MessageCircle className="h-6 w-6 text-gold" />
-              </button>
             </div>
           </nav>
 
@@ -149,14 +133,6 @@ export default function App() {
                     className="flex h-14 items-center justify-center rounded-sm bg-gold px-8 text-sm font-bold tracking-widest text-neutral-950 uppercase transition-transform active:scale-95 sm:w-auto"
                   >
                     View Collection
-                  </a>
-                  <a 
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-14 items-center justify-center rounded-sm border border-neutral-700 px-8 text-sm font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-900 active:scale-95 sm:w-auto"
-                  >
-                    Inquire Now
                   </a>
                 </div>
               </motion.div>
@@ -266,19 +242,6 @@ export default function App() {
                     <div className="space-y-8">
                       <div className="flex items-start gap-6">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-gold">
-                          <MessageCircle className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-white">WhatsApp</h4>
-                          <p className="mb-2 text-neutral-400">Inquire about stone availability and pricing</p>
-                          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
-                            {WHATSAPP_NUMBER}
-                          </a>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-6">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-gold">
                           <Mail className="h-6 w-6" />
                         </div>
                         <div>
@@ -333,7 +296,7 @@ export default function App() {
                 <span className="font-serif text-lg font-bold tracking-tight text-white uppercase">Prestige Gems</span>
               </div>
               <p className="text-xs text-neutral-600">
-                &copy; {new Date().getFullYear()} Prestige Gems. All Rights Reserved. | Gem Dealers in Kenya – WhatsApp: {WHATSAPP_NUMBER}
+                &copy; {new Date().getFullYear()} Prestige Gems. All Rights Reserved. | Gem Dealers in Kenya
               </p>
               <div className="flex gap-6 text-xs text-neutral-500 uppercase tracking-widest">
                 <span className="cursor-pointer hover:text-white">Privacy</span>
