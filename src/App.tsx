@@ -46,10 +46,60 @@ const GEMSTONES = [
   }
 ];
 
+const JEWELRY_DESIGNS = [
+  {
+    name: "Tanzanite Rings",
+    description: "Bespoke handcrafted fine ring featuring rare violet-blue emerald-cut Tanzanite with side diamonds.",
+    image: "https://www.jackfriedman.co.za/wp-content/uploads/2020/05/3417-emerald-cut-with-radiant-in-straight-claws-tanzanite-ring-resize-1.png",
+    fallback: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&q=80&w=600",
+    color: "bg-indigo-600"
+  },
+  {
+    name: "Tsavorite Rings",
+    description: "Exquisite white gold ring adorned with vibrant green Tsavorite garnet and brilliant diamonds.",
+    image: "https://zaveris.co.ke/wp-content/uploads/2022/11/ER828b.jpg",
+    fallback: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=600",
+    color: "bg-emerald-700"
+  },
+  {
+    name: "Sapphire Rings",
+    description: "Timeless handcrafted ring showcasing deep blue natural sapphire elegance and artisan finishing.",
+    image: "https://jasonree.com.au/cdn/shop/articles/image3_08ef3f90-e842-42d8-b635-bb1575c54a76.jpg?v=1750835709",
+    fallback: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600",
+    color: "bg-blue-800"
+  },
+  {
+    name: "Aquamarine Rings",
+    description: "Antique leaf-inspired natural emerald-cut aquamarine ring crafted with precision sterling silver.",
+    image: "https://esdomera.com/cdn/shop/files/antique-2-ct-emerald-cut-natural-inspired-leaf-aquamarine-ring-esdomera-3_1800x1800.jpg?v=1743995801",
+    fallback: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=600",
+    color: "bg-cyan-600"
+  }
+];
+
+function GemImage({ src, alt, fallback }: { src: string; alt: string; fallback?: string }) {
+  const [imgSrc, setImgSrc] = useState(src);
+
+  return (
+    <img 
+      src={imgSrc} 
+      alt={alt}
+      className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+      referrerPolicy="no-referrer"
+      onError={() => {
+        if (fallback && imgSrc !== fallback) {
+          setImgSrc(fallback);
+        }
+      }}
+    />
+  );
+}
+
 const EMAIL = "prestige.gems@yahoo.com";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState<"ALL" | "ROUGH" | "JEWELRY">("ALL");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -225,41 +275,124 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="mb-20 flex flex-col items-end justify-between gap-6 md:flex-row">
+              <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
                 <div className="max-w-xl">
                   <h2 className="mb-4 font-serif text-4xl font-light text-white sm:text-5xl">Our Premier Vault</h2>
-                  <p className="text-neutral-400">Discover a curated selection of rough gemstones from the heart of East Africa. Each stone tells a geologic story millions of years in the making.</p>
+                  <p className="text-neutral-400">Discover our authentic rough gemstones and handcrafted fine jewelry collections from Nairobi, Kenya.</p>
                 </div>
-                <p className="font-mono text-sm text-gold">SCROLL TO DISCOVER</p>
+                {/* Category Filter Pills */}
+                <div className="flex flex-wrap items-center gap-2 rounded-sm border border-neutral-800 bg-neutral-900/50 p-1.5 backdrop-blur-md">
+                  <button
+                    onClick={() => setActiveCategory("ALL")}
+                    className={`rounded-xs px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all ${
+                      activeCategory === "ALL"
+                        ? "bg-gold text-neutral-950 shadow-md"
+                        : "text-neutral-400 hover:text-white"
+                    }`}
+                  >
+                    All Collections
+                  </button>
+                  <button
+                    onClick={() => setActiveCategory("JEWELRY")}
+                    className={`rounded-xs px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all ${
+                      activeCategory === "JEWELRY"
+                        ? "bg-gold text-neutral-950 shadow-md"
+                        : "text-neutral-400 hover:text-white"
+                    }`}
+                  >
+                    Handcrafted Jewelry
+                  </button>
+                  <button
+                    onClick={() => setActiveCategory("ROUGH")}
+                    className={`rounded-xs px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all ${
+                      activeCategory === "ROUGH"
+                        ? "bg-gold text-neutral-950 shadow-md"
+                        : "text-neutral-400 hover:text-white"
+                    }`}
+                  >
+                    Rough Gemstones
+                  </button>
+                </div>
               </div>
 
-              <div className="grid gap-px bg-neutral-800 md:grid-cols-2 lg:grid-cols-3">
-                {GEMSTONES.map((gem, index) => (
-                  <motion.div 
-                    key={index}
-                    whileHover={{ backgroundColor: "rgb(23, 23, 23)" }}
-                    className="group relative bg-neutral-950 p-8 transition-colors"
-                    viewport={{ once: true }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <div className="relative mb-8 aspect-[4/5] overflow-hidden rounded-sm bg-neutral-900">
-                      <img 
-                        src={gem.image} 
-                        alt={gem.name}
-                        className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className={`absolute bottom-4 left-4 h-12 w-12 rounded-full border border-white/20 backdrop-blur-lg ${gem.color} opacity-20 transition-opacity group-hover:opacity-100`} />
-                    </div>
-                    <h3 className="mb-3 font-serif text-2xl font-medium text-white">{gem.name}</h3>
-                    <p className="text-sm font-light leading-relaxed text-neutral-500 transition-colors group-hover:text-neutral-300">
-                      {gem.description}
+              {/* Handcrafted Jewelry Category Section */}
+              {(activeCategory === "ALL" || activeCategory === "JEWELRY") && (
+                <div className="mb-20">
+                  <div className="mb-8 border-l-2 border-gold pl-4">
+                    <span className="font-mono text-xs font-semibold tracking-widest text-gold uppercase">Jewelry Category</span>
+                    <h3 className="font-serif text-3xl font-light text-white">Handcrafted Jewelry</h3>
+                    <p className="mt-1 font-serif text-base italic text-neutral-300">
+                      please view some of our designs
                     </p>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+
+                  <div className="grid gap-px bg-neutral-800 md:grid-cols-2 lg:grid-cols-4">
+                    {JEWELRY_DESIGNS.map((item, index) => (
+                      <motion.div 
+                        key={index}
+                        whileHover={{ backgroundColor: "rgb(23, 23, 23)" }}
+                        className="group relative bg-neutral-950 p-6 transition-colors"
+                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="relative mb-6 aspect-[4/5] overflow-hidden rounded-sm bg-neutral-900">
+                          <GemImage 
+                            src={item.image} 
+                            alt={item.name}
+                            fallback={item.fallback}
+                          />
+                          <div className={`absolute bottom-3 left-3 h-10 w-10 rounded-full border border-white/20 backdrop-blur-lg ${item.color} opacity-30 transition-opacity group-hover:opacity-100`} />
+                        </div>
+                        <h4 className="mb-2 font-serif text-xl font-medium text-white">{item.name}</h4>
+                        <p className="text-xs font-light leading-relaxed text-neutral-400 transition-colors group-hover:text-neutral-300">
+                          {item.description}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Rough Gemstones Category Section */}
+              {(activeCategory === "ALL" || activeCategory === "ROUGH") && (
+                <div>
+                  <div className="mb-8 border-l-2 border-neutral-700 pl-4">
+                    <span className="font-mono text-xs font-semibold tracking-widest text-neutral-500 uppercase">Gemstone Category</span>
+                    <h3 className="font-serif text-3xl font-light text-white">Rough Gemstones</h3>
+                    <p className="mt-1 text-sm font-light text-neutral-400">
+                      Authentic subterranean treasures ethically sourced from Kenyan mines.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-px bg-neutral-800 md:grid-cols-2 lg:grid-cols-3">
+                    {GEMSTONES.map((gem, index) => (
+                      <motion.div 
+                        key={index}
+                        whileHover={{ backgroundColor: "rgb(23, 23, 23)" }}
+                        className="group relative bg-neutral-950 p-8 transition-colors"
+                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="relative mb-8 aspect-[4/5] overflow-hidden rounded-sm bg-neutral-900">
+                          <GemImage 
+                            src={gem.image} 
+                            alt={gem.name}
+                          />
+                          <div className={`absolute bottom-4 left-4 h-12 w-12 rounded-full border border-white/20 backdrop-blur-lg ${gem.color} opacity-20 transition-opacity group-hover:opacity-100`} />
+                        </div>
+                        <h3 className="mb-3 font-serif text-2xl font-medium text-white">{gem.name}</h3>
+                        <p className="text-sm font-light leading-relaxed text-neutral-500 transition-colors group-hover:text-neutral-300">
+                          {gem.description}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
 
