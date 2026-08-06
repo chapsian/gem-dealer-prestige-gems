@@ -1,6 +1,6 @@
 {
-  "name": "Prestige Gems - Gem Dealers in Kenya",
-  "description": "Premium dealer of rough gemstones in Kenya, including Tsavorites, Rhodolites, Garnets, Tourmalines, and Citrines.",
+  "name": "Prestige Creations - Handcrafted Fine Jewelry",
+  "description": "Prestige Creations is a premier jewelry design and manufacturing company based in Nairobi, Kenya, dedicated to creating exquisite handmade fine jewelry from genuine sterling silver and natural gemstones.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

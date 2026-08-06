@@ -89,10 +89,11 @@ export default function App() {
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
               <div className="flex items-center gap-2">
                 <Gem className="h-8 w-8 text-gold" />
-                <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">Prestige Gems</span>
+                <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">Prestige Creations</span>
               </div>
               
               <div className="flex items-center gap-8">
+                <a href="#about" className="text-sm font-medium text-neutral-400 transition-colors hover:text-white">About</a>
                 <a href="#collection" className="text-sm font-medium text-neutral-400 transition-colors hover:text-white">Collection</a>
                 <a href="#contact" className="text-sm font-medium text-neutral-400 transition-colors hover:text-white">Contact</a>
               </div>
@@ -104,7 +105,7 @@ export default function App() {
             <div className="absolute inset-0 z-0">
               <img 
                 src="https://images.unsplash.com/photo-1598283642340-e7a96a92543c?auto=format&fit=crop&q=80&w=1920" 
-                alt="Rough gemstones hero"
+                alt="Handcrafted fine jewelry hero"
                 className="h-full w-full object-cover opacity-20 grayscale"
                 referrerPolicy="no-referrer"
               />
@@ -118,21 +119,27 @@ export default function App() {
                 transition={{ duration: 0.8 }}
               >
                 <span className="mb-4 inline-block font-mono text-xs font-semibold tracking-[0.2em] text-gold uppercase">
-                  Ethically Sourced in Kenya
+                  Handcrafted Fine Jewelry | Nairobi, Kenya
                 </span>
                 <h1 className="mb-6 font-serif text-5xl font-light leading-[1.1] text-white sm:text-7xl lg:text-8xl">
-                  Authentic Rough <br />
-                  <span className="italic text-gold">Gemstones</span>
+                  Prestige <br />
+                  <span className="italic text-gold">Creations</span>
                 </h1>
-                <p className="mx-auto mb-10 max-w-2xl text-lg font-light text-neutral-400 md:text-xl">
-                  Connecting the world to Kenya's finest subterranean treasures. Direct from source to collector, with a commitment to quality and transparency.
+                <p className="mx-auto mb-10 max-w-3xl text-lg font-light leading-relaxed text-neutral-300 md:text-xl">
+                  Exquisite handmade fine jewelry combining traditional artistry with genuine sterling silver and carefully selected natural gemstones.
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <a 
-                    href="#collection"
+                    href="#about"
                     className="flex h-14 items-center justify-center rounded-sm bg-gold px-8 text-sm font-bold tracking-widest text-neutral-950 uppercase transition-transform active:scale-95 sm:w-auto"
                   >
-                    View Collection
+                    Our Story
+                  </a>
+                  <a 
+                    href="#collection"
+                    className="flex h-14 items-center justify-center rounded-sm border border-neutral-700 px-8 text-sm font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-900 active:scale-95 sm:w-auto"
+                  >
+                    Explore Vault
                   </a>
                 </div>
               </motion.div>
@@ -151,16 +158,40 @@ export default function App() {
           <section className="border-y border-neutral-800 bg-neutral-900/50">
             <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
               {[
-                { label: "Origin", value: "Kenya" },
-                { label: "Quality", value: "Exquisite" },
-                { label: "Service", value: "Direct" },
-                { label: "Delivery", value: "Global" }
+                { label: "Origin", value: "Nairobi, Kenya" },
+                { label: "Craftsmanship", value: "Handmade" },
+                { label: "Materials", value: "Silver & Gems" },
+                { label: "Reach", value: "Global" }
               ].map((stat, i) => (
                 <div key={i} className="text-center md:text-left">
                   <p className="font-mono text-[10px] tracking-widest text-neutral-500 uppercase">{stat.label}</p>
                   <p className="font-serif text-xl font-medium text-white">{stat.value}</p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* About Section - Write-Up */}
+          <section id="about" className="relative border-b border-neutral-800 bg-neutral-900/30 py-28 backdrop-blur-md">
+            <div className="mx-auto max-w-5xl px-6">
+              <div className="mb-12 text-center">
+                <span className="mb-3 inline-block font-mono text-xs font-semibold tracking-[0.2em] text-gold uppercase">
+                  About Prestige Creations
+                </span>
+                <h2 className="font-serif text-4xl font-light text-white sm:text-5xl">
+                  Artistry, Passion & Uncompromising Quality
+                </h2>
+                <div className="mx-auto mt-4 h-0.5 w-16 bg-gold/50" />
+              </div>
+
+              <div className="space-y-8 text-center text-lg font-light leading-relaxed text-neutral-300 md:text-xl">
+                <p className="rounded-sm border border-neutral-800/60 bg-neutral-950/50 p-8 shadow-xl">
+                  Prestige Creations is a premier jewelry design and manufacturing company based in Nairobi, Kenya, dedicated to creating exquisite handmade fine jewelry. Our skilled craftsmen combine traditional artistry with exceptional attention to detail, crafting each piece from genuine sterling silver and carefully selected natural gemstones. Every creation reflects our commitment to quality, authenticity, and timeless elegance, resulting in jewelry that is both beautiful and enduring.
+                </p>
+                <p className="rounded-sm border border-neutral-800/60 bg-neutral-950/50 p-8 shadow-xl">
+                  Serving discerning clients across North America, Europe, and Asia, Prestige Creations has built a reputation for delivering distinctive handcrafted jewelry that meets international standards of excellence. Whether creating unique collections for retailers, designers, or private clients, we take pride in showcasing Kenya's rich craftsmanship while offering elegant designs that appeal to global markets. At Prestige Creations, every piece tells a story of artistry, passion, and uncompromising quality.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -269,7 +300,7 @@ export default function App() {
                     <div className="relative z-10 flex h-full flex-col justify-end">
                       <div className="mb-8">
                         <Gem className="mb-4 h-12 w-12 text-gold" />
-                        <p className="text-2xl font-light italic text-white">"Bringing the raw beauty of Kenya’s gem belts to the global stage."</p>
+                        <p className="text-2xl font-light italic text-white">"Showcase Kenya's rich craftsmanship through timeless, handcrafted fine jewelry."</p>
                       </div>
                       <div className="flex items-center gap-4">
                         <Instagram className="h-5 w-5 cursor-pointer text-neutral-500 hover:text-white" />
@@ -278,7 +309,7 @@ export default function App() {
                     </div>
                     <img 
                       src="https://images.unsplash.com/photo-1590481230198-d7b370603f90?auto=format&fit=crop&q=80&w=800" 
-                      alt="Kenya mining landscape"
+                      alt="Kenya craftsmanship"
                       className="absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-overlay"
                       referrerPolicy="no-referrer"
                     />
@@ -293,10 +324,10 @@ export default function App() {
             <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
               <div className="flex items-center gap-2">
                 <Gem className="h-5 w-5 text-gold" />
-                <span className="font-serif text-lg font-bold tracking-tight text-white uppercase">Prestige Gems</span>
+                <span className="font-serif text-lg font-bold tracking-tight text-white uppercase">Prestige Creations</span>
               </div>
               <p className="text-xs text-neutral-600">
-                &copy; {new Date().getFullYear()} Prestige Gems. All Rights Reserved. | Gem Dealers in Kenya
+                &copy; {new Date().getFullYear()} Prestige Creations. All Rights Reserved. | Fine Jewelry & Gemstones in Nairobi, Kenya
               </p>
               <div className="flex gap-6 text-xs text-neutral-500 uppercase tracking-widest">
                 <span className="cursor-pointer hover:text-white">Privacy</span>
