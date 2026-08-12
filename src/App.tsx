@@ -95,7 +95,11 @@ function GemImage({ src, alt, fallback }: { src: string; alt: string; fallback?:
   );
 }
 
-const EMAIL = "prestige.gems@yahoo.com";
+const EMAILS = [
+  "ian@prestigecreations.co.ke",
+  "ken@prestigecreations.co.ke",
+  "prestige.gems@yahoo.com"
+];
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -411,9 +415,13 @@ export default function App() {
                         <div>
                           <h4 className="font-medium text-white">Email</h4>
                           <p className="mb-2 text-neutral-400">For formal inquiries and business partnerships</p>
-                          <a href={`mailto:${EMAIL}`} className="text-gold hover:underline">
-                            {EMAIL}
-                          </a>
+                          <div className="flex flex-col gap-1">
+                            {EMAILS.map((email) => (
+                              <a key={email} href={`mailto:${email}`} className="text-gold hover:underline">
+                                {email}
+                              </a>
+                            ))}
+                          </div>
                         </div>
                       </div>
 
